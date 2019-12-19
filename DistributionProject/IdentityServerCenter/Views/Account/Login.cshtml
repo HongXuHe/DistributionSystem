@@ -1,0 +1,15 @@
+﻿@model AppUser
+@{
+    Layout = null;
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+<form asp-action="Login" method="post">
+    Name:<input asp-for="Name" />
+    Password:<input asp-for="Password" />
+    <input type="hidden" name="returnUrl" value=@Model.ReturnUrl />
+    <input type="submit" value="Register" />
+</form>
+<a asp-action="Register" asp-route-returnUrl=@Model.ReturnUrl>Register</a>
+

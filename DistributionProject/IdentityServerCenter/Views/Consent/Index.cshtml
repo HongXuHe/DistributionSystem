@@ -1,0 +1,38 @@
+﻿@model ConsentViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1>@Model?.ClientName</h1>
+    <form asp-action="Index" method="post">
+        <input type="hidden" asp-for="ReturnUrl" />
+        @if (Model.IdentityScopes.Any())
+        {
+            <ul>
+                @foreach (var scope in Model.IdentityScopes)
+                {
+                    <li><input type="checkbox" value=@scope.Name>@scope.Name</li>
+                }
+            </ul>
+        }
+        @if (Model.ResorceScopes.Any())
+        {
+            <ul>
+                @foreach (var rscope in Model.ResorceScopes)
+                {
+                    <li><input type="checkbox" value=@rscope.Name>@rscope.Name</li>
+                }
+            </ul>
+        }
+        <input type="submit" value="Authorize" />
+    </form>
+</body>
+</html>
